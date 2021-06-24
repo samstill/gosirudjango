@@ -10,7 +10,7 @@ class UsersAdmin(UserAdmin):
     add_form = UsersCreationForm
     form = UsersChangeForm
     model = Users
-    list_display = ["email"]
+    list_display = ['username',"email", 'is_verified']
 
 
 admin.site.register(Users, UsersAdmin)
