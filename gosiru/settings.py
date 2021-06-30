@@ -38,14 +38,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     # LOCAL Apps
     'users.apps.UsersConfig',
     'main.apps.MainConfig',
 
     # Third party
     'crispy_forms',
-    'phonenumber_field'
+    'phonenumber_field',
+    'allauth',
+    'allauth.account',
+
+    # Liveload server
+    'livereload',
 ]
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -57,6 +64,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # middleware livereload
+    'livereload.middleware.LiveReloadScript',
 ]
 
 ROOT_URLCONF = 'gosiru.urls'
@@ -147,7 +157,18 @@ STATICFILES_FINDERS = [
 ]
 
 
-# Registration
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = 'login'
+# Django all auth settings
+LOGIN_REDIRECT_URL = '/profile'
+ACCOUNT_LOGOUT_REDIRECT = '/account_login'
+ACCOUNT_SESSION_REMEMBER = True
+
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = (
+'django.contrib.auth.backends.ModelBackend',
+'allauth.account.auth_backends.AuthenticationBackend', 
+)
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -1,0 +1,49 @@
+{% extends "_base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+    {% block title %}
+        Gosiru | Login
+    {% endblock title %}
+
+    {% block body %}
+    <div class="container d-flex justify-content-center">
+        <!-- <div min-width="500px" max-width="500px" > -->
+            <div class="row m-4 p-5" >
+                <div class="col"> 
+                    <div class="card border-1 shadow border border-secondary">
+                        <div class="card-text">
+                            <form method="post" class="form m-4  text-center justify-content-center">
+                                <a href="/"><img src="{% static 'images/logo.svg'%}" class="img-responsive m-2" width="60" height="60" alt="logo" /></a>
+                                <div class="card-title">
+                                    <h1 class='display-4'>Login</h1>
+                                </div>
+                                {% csrf_token %}
+                                  {{ form|crispy }}
+                                <!-- <div class="alert alert-danger" role="alert">
+                                    {{form.errors}}
+                                </div>
+                                <div class="m-3">
+                                    {{ form.username }}
+                                </div>
+                                <div class="m-3">
+                                    {{ form.password }}
+                                </div> -->
+                            <button type="submit" name="login" class="btn btn-primary m-2">Login</button>
+                           <p>
+                            <a href="{% url 'account_signup' %}" class="text-center card-link">Create a new account</a>
+                           </p> 
+                           <p>
+                            Forgot Password?
+                            <a href="{% url 'account_reset_password' %}" class="text-center card-link">Reset here</a>
+                           </p> 
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        
+    
+    
+    {% endblock body %}

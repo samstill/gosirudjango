@@ -1,0 +1,9 @@
+body {
+    background-color: #f3f5f7;
+}
+.btn {
+    border-radius: 77px;
+}
+.card {
+    border-radius: 18px 18px 18px 18px;
+}
