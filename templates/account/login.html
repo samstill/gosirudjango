@@ -18,16 +18,16 @@
                                     <h1 class='display-4'>Login</h1>
                                 </div>
                                 {% csrf_token %}
-                                  {{ form|crispy }}
-                                <!-- <div class="alert alert-danger" role="alert">
-                                    {{form.errors}}
-                                </div>
+                                  <!-- {{ form|crispy }} -->
+                                {% if form.errors %}
+                                    <div class="alert alert-danger">Something's not right! try again...</div>
+                                {% endif %}
                                 <div class="m-3">
-                                    {{ form.username }}
+                                    {{ form.login }}
                                 </div>
                                 <div class="m-3">
                                     {{ form.password }}
-                                </div> -->
+                                </div>
                             <button type="submit" name="login" class="btn btn-primary m-2">Login</button>
                            <p>
                             <a href="{% url 'account_signup' %}" class="text-center card-link">Create a new account</a>

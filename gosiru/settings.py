@@ -159,16 +159,21 @@ STATICFILES_FINDERS = [
 
 
 # Django all auth settings
-LOGIN_REDIRECT_URL = '/profile'
-ACCOUNT_LOGOUT_REDIRECT = '/account_login'
+LOGIN_REDIRECT_URL='home'
+ACCOUNT_LOGOUT_REDIRECT='login'
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_SESSION_REMEMBER = True
 
-SITE_ID = 1
-
-AUTHENTICATION_BACKENDS = (
-'django.contrib.auth.backends.ModelBackend',
-'allauth.account.auth_backends.AuthenticationBackend', 
-)
+SITE_ID=1
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+AUTHENTICATION_BACKENDS=(
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+    )
+
+
+EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
+
+
