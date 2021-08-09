@@ -7,23 +7,30 @@ Profile
 {% block body %}
 <div class="container">
     <div class="row align-items-middle justify-content-center">
-        <div class="col-md-6 m-5">
-        {% if is_authenticated %}
-        <a href="" class="link-dark">
-            <div class="card shadow p-4">
+        <div class="col-lg-4 md-6 m-5"></div>
+        
+        {% if user.is_authenticated %}
+        
+        <!-- <a href="{% url 'home' %}" class="link-dark"> -->
+            <div class="card p-4">
                 <div class="card-title text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-person-fill" viewBox="0 0 16 16">
                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                     </svg>
-                    <div class="h3 text-dark" text-decoration="none">Profile</div>
+                    <div class="h3 text-dark profiledata" text-decoration="none">Profile</div>
+                    <div class="h5 text-dark profiledata" text-decoration="none">Email<p class="text-muted">{{user.email}}</p> </div>
+                    <div class="h5 text-dark profiledata" text-decoration="none">Username<p class="text-success">{{user.username}}</p> </div>
+                    <div class="h3 text-dark" text-decoration="none">Frontend developer</div>
+                    <a class="btn btn-primary p-2 m-3" href="{% url 'home' %}">Visit Console</a>
                 </div> 
                 <div class="card-content">
             </div>
             </div>
-        </a>
+        <!-- </a> -->
         {% else %}
         <a href="{% url 'login' %}" class="link-dark">
-            <div class="card shadow p-4">
+            <div class="card shadow p-4 text-center align-items-middle justify-content-center">
+                <img src="{% static 'images/logo.svg'%}" class="img-responsive m-2" width="60" height="60" alt="logo" />
                 <div class="card-title text-center">
                     You must logged in, to see your profile...click here to login!
                 </div>
