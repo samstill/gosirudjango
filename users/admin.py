@@ -11,6 +11,5 @@ class UsersAdmin(UserAdmin):
     form = UsersChangeForm
     model = Users
     list_display = ['username',"email"]
-
-
+    
 admin.site.register(Users, UsersAdmin)
